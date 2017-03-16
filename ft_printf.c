@@ -40,7 +40,6 @@ int			read_con(char *fmt, va_list ap)
 int			ft_printf(const char *fmt, ...)
 {
 	va_list		ap;
-	int			ret;
 	int			count;
 	int			len;
 
@@ -65,11 +64,11 @@ int			ft_printf(const char *fmt, ...)
 	va_end(ap);
 	return (0);
 }
-
+/*
 int			main(void)
 {
 	char s[15] = "como estas";
 	printf("%s %s\n", s, "😗");
 	ft_printf("%s %s\n", s,"😗");
 	return (0);
-}
+}*/
