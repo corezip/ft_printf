@@ -12,28 +12,24 @@
 
 #include "ft_printf.h"
 
-// int		inicializar(va_list pa, const char *fmt)
-// {
-// 	t_head	*start;
-
-// 	start = (t_head*) malloc(sizeof(t_head));
-// 	if ()
-// 	start->head_s.precision = 0;
-// 	start->head_s.width = 0;
-// }
-
 int			read_con(char *fmt, va_list ap)
 {
-	if (*fmt == 's')
+	if (*fmt == 's' || *fmt == 'S')
 		return (print_s(ap));
 	else if (*fmt == 'i' || *fmt == 'd')
 		return (print_d(ap));
-	else if (*fmt == 'o')
+	else if (*fmt == 'o' || *fmt == 'O')
 		return (print_o(ap));
-	else if (*fmt == 'c')
+	else if (*fmt == 'c' || *fmt == 'C')
 		return (print_c(ap));
-	// else if(*fmt == ".")
-	// 		return (inicializar(va, fmt));
+	else if (*fmt == 'x')
+		return (print_x(ap));
+	else if (*fmt == 'X')
+		return (print_x_upper(ap));
+	else if (*fmt == 'p')
+		return (print_p(ap));
+	else if (*fmt == '%')
+		return (print_m());
 	return (0);
 }
 
@@ -62,13 +58,5 @@ int			ft_printf(const char *fmt, ...)
 		fmt += 1;
 	}
 	va_end(ap);
-	return (0);
+	return (count);
 }
-/*
-int			main(void)
-{
-	char s[15] = "como estas";
-	printf("%s %s\n", s, "😗");
-	ft_printf("%s %s\n", s,"😗");
-	return (0);
-}*/
