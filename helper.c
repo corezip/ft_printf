@@ -47,3 +47,14 @@ char			*ft_strlowcase(char *str)
 	}
 	return (str);
 }
+
+void			u_putnbr(unsigned int n)
+{
+	if (n < 10)
+		ft_putchar(n + 48);
+	else if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+}
