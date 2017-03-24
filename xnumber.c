@@ -16,10 +16,10 @@ int				resul_hex(t_head *x)
 {
 	x->head_x.count = 0;
 	if (x->head_x.decimalnumber == 0)
-		{
-			write(1, "0", 1);
-			x->head_x.count += 1;
-		}
+	{
+		write(1, "0", 1);
+		x->head_x.count += 1;
+	}
 	x->head_x.i = 0;
 	x->head_x.quotient = x->head_x.decimalnumber;
 	while (x->head_x.quotient != 0)

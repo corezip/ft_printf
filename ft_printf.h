@@ -25,6 +25,7 @@ typedef	struct			s_main
 {
 	int				count;
 	int				len;
+	char			*format;
 }						t_main;
 
 typedef	struct			s_u
@@ -44,6 +45,7 @@ typedef	struct			s_d
 	int				value;
 	int				count;
 	int				flag;
+	char			*str;
 }						t_d;
 
 typedef	struct			s_s
@@ -75,6 +77,14 @@ typedef	struct			s_x
 	char			*hexa;
 }						t_x;
 
+typedef	struct			s_zero
+{
+	int				ilen;
+	char			convert[10];
+	char			*tmp;
+	int				num;
+}						t_zero;
+
 typedef	struct			s_head
 {
 	t_d				head_d;
@@ -82,6 +92,7 @@ typedef	struct			s_head
 	t_o				head_o;
 	t_x				head_x;
 	t_u				head_u;
+	t_zero			head_zero;
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);
@@ -100,5 +111,7 @@ char					*ft_strlowcase(char *str);
 int						u_calc(long int n);
 void					u_putnbr(unsigned int n);
 int						resul_hex(t_head *x);
+int						hash(char ***fmt, va_list ap);
+int						zero_w(char ****fmt, va_list ap);
 
 #endif
