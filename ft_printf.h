@@ -21,6 +21,14 @@
 # include <wchar.h>
 # include "./libft/libft.h"
 
+typedef	struct			s_pres
+{
+	int				space;
+	int				presition;
+	int				i;
+	char			str[100];
+}						t_pres;
+
 typedef	struct			s_main
 {
 	int				count;
@@ -30,8 +38,6 @@ typedef	struct			s_main
 
 typedef	struct			s_u
 {
-	int				precision;
-	int				width;
 	unsigned int	value;
 	int				count;
 	int				flag;
@@ -40,19 +46,18 @@ typedef	struct			s_u
 
 typedef	struct			s_d
 {
-	int				precision;
-	int				width;
 	int				value;
 	int				count;
 	int				flag;
+	int				len;
 	char			*str;
 }						t_d;
 
 typedef	struct			s_s
 {
-	int				precision;
-	int				width;
 	char			*value;
+	int				len;
+	int				count;
 }						t_s;
 
 typedef	struct			s_o
@@ -80,7 +85,7 @@ typedef	struct			s_x
 typedef	struct			s_zero
 {
 	int				ilen;
-	char			convert[10];
+	char			convert[20];
 	char			*tmp;
 	int				num;
 }						t_zero;
@@ -93,13 +98,14 @@ typedef	struct			s_head
 	t_x				head_x;
 	t_u				head_u;
 	t_zero			head_zero;
+	t_pres			head_pr;
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);
 int						print_s(va_list ap);
 int						print_c(va_list ap);
-int						print_d(va_list ap);
-int						print_o(va_list ap);
+int						print_d(va_list ap, int flag);
+int						print_o(va_list ap, int flag);
 int						print_x(va_list ap);
 int						print_x_upper(va_list ap);
 int						print_p(va_list ap);
@@ -112,6 +118,13 @@ int						u_calc(long int n);
 void					u_putnbr(unsigned int n);
 int						resul_hex(t_head *x);
 int						hash(char ***fmt, va_list ap);
-int						zero_w(char ****fmt, va_list ap);
+int						zero_w(char ****fmt, va_list ap, int flag);
+int						number_len(t_head *i);
+int						mult_options(char ***fmt, va_list ap);
+int						space_d(char ****fmt, va_list ap, int flag);
+int						print_d_positive(t_head *x);
+int						pre_d_s(t_head *x, va_list ap, int flag);
+int						print_d_negative(t_head *x);
+int						pre_s(t_head *x, va_list ap, int flag);
 
 #endif

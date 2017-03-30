@@ -12,12 +12,56 @@
 
 #include "ft_printf.h"
 
+int				resul_p(t_head *x)
+{
+	x->head_x.count = 0;
+	if (x->head_x.decimalnumber == 0)
+	{
+		write(1, "0", 1);
+		x->head_x.count += 1;
+	}
+	x->head_x.i = 0;
+	x->head_x.quotient = x->head_x.decimalnumber;
+	while (x->head_x.quotient != 0)
+	{
+		x->head_x.temp = x->head_x.quotient % 16;
+		if (x->head_x.temp < 10)
+			x->head_x.temp = x->head_x.temp + 48;
+		else
+			x->head_x.temp = x->head_x.temp + 55;
+		x->head_x.hexadecimalnumber[x->head_x.i++] = x->head_x.temp;
+		x->head_x.quotient = x->head_x.quotient / 16;
+		x->head_x.count++;
+	}
+	return (x->head_x.count);
+}
+
+int				p_solver(long i)
+{
+	t_head		*x;
+
+	x = (t_head*)malloc(sizeof(t_head));
+	x->head_x.decimalnumber = i;
+	if (x->head_x.decimalnumber >= 0)
+		resul_hex(x);
+	else
+	{
+		x->head_x.decimalnumber = x->head_x.decimalnumber + 4294967296;
+		resul_hex(x);
+	}
+	reverse_array(x->head_x.hexadecimalnumber);
+	ft_strlowcase(x->head_x.hexadecimalnumber);
+	ft_putstr(x->head_x.hexadecimalnumber);
+	return (x->head_x.count);
+}
+
 int				print_p(va_list ap)
 {
-	int			i;
+	long			i;
 
-	write(1, "0x7fff", 6);
-	i = print_x(ap);
+	write(1, "0x", 2);
+	i = (long) va_arg(ap, void*);
+	i = p_solver(i);
 	return (i);
 }
 

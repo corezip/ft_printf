@@ -12,7 +12,25 @@
 
 #include "ft_printf.h"
 
-int				print_o(va_list ap)
+int				number_len(t_head *i)
+{
+	i->head_d.count = 1;
+	i->head_d.flag = 0;
+	if (i->head_d.value < 0)
+	{
+		i->head_d.flag = 1;
+		i->head_d.count++;
+	}
+	while ((i->head_d.value / 10 < 0 && (i->head_d.flag == 1)) ||
+	(i->head_d.value / 10 > 0 && i->head_d.flag == 0))
+	{
+		i->head_d.value = i->head_d.value / 10;
+		i->head_d.count++;
+	}
+	return (i->head_d.count);
+}
+
+int				print_o(va_list ap, int flag)
 {
 	t_head		*o;
 
@@ -20,6 +38,8 @@ int				print_o(va_list ap)
 	o->head_o.i = 1;
 	o->head_o.octal = 1;
 	o->head_o.n = va_arg(ap, int);
+	if (o->head_o.n == 0 && flag == 1)
+		return (1);
 	o->head_o.x = o->head_o.n;
 	while (o->head_o.n != 0)
 	{
@@ -59,25 +79,18 @@ int				print_c(va_list ap)
 	return (1);
 }
 
-int				print_d(va_list ap)
+int				print_d(va_list ap, int flag)
 {
 	t_head		*i;
 
 	i = (t_head*)malloc(sizeof(t_head));
 	i->head_d.value = va_arg(ap, int);
+	if (i->head_d.value >= 0 && flag == 1)
+	{
+		write(1, "+", 1);
+		ft_putnbr(i->head_d.value);
+		return (number_len(i) + 1);
+	}
 	ft_putnbr(i->head_d.value);
-	i->head_d.count = 1;
-	i->head_d.flag = 0;
-	if (i->head_d.value < 0)
-	{
-		i->head_d.flag = 1;
-		i->head_d.count++;
-	}
-	while ((i->head_d.value / 10 < 0 && (i->head_d.flag == 1)) ||
-	(i->head_d.value / 10 > 0 && i->head_d.flag == 0))
-	{
-		i->head_d.value = i->head_d.value / 10;
-		i->head_d.count++;
-	}
-	return (i->head_d.count);
+	return (number_len(i));
 }

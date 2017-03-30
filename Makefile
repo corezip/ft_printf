@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 CFLAG = -c -Wall -Werror -Wextra
 
-SRCS = ft_printf.c print_s_d_o.c print_p_m_u.c helper.c xnumber.c zero.c
+SRCS = ft_printf.c print_s_d_o.c print_p_m_u.c helper.c xnumber.c zero.c space.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -32,6 +32,7 @@ LIB_OBJS = libft/ft_memset.o \
 			libft/ft_isalnum.o \
 			libft/ft_isascii.o \
 			libft/ft_isprint.o \
+			libft/ft_isspace.o \
 			libft/ft_toupper.o \
 			libft/ft_tolower.o \
 			libft/ft_memalloc.o \
@@ -74,21 +75,24 @@ LIBS = ./libft/libft.a
 all: $(NAME)
 
 $(OBJS):
-	gcc $(CFLAG) $(SRCS)
+	@gcc $(CFLAG) $(SRCS)
 
 $(LIB_OBJS):
-	$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft
 
 $(NAME): $(OBJS) $(LIB_OBJS)
-	ar rcs $(NAME) $(LIB_OBJS) $(OBJS)
-	ranlib $(NAME)
+	@ar rcs $(NAME) $(LIB_OBJS) $(OBJS)
+	@ranlib $(NAME)
+	@echo "\033[32mFT_PRINTF: Built library. ~(˘▾˘~) \033[0m"
 
 clean:
-	rm -f $(OBJS)
-	$(MAKE) -C ./libft/ clean
+	@/bin/rm -f $(OBJS)
+	@$(MAKE) -C ./libft/ clean
+	@echo "\033[32mFT_PRINTF: Cleaned up object files. ~(˘▾˘~) \033[0m"
 
 fclean: clean
-	rm -f $(NAME)
-	$(MAKE) -C ./libft/ fclean
+	@/bin/rm -f $(NAME)
+	@$(MAKE) -C ./libft/ fclean
+	@echo "\033[32mFT_PRINTF: Cleaned up compiled files. ~(˘▾˘~) \033[0m"
 
 re: fclean all

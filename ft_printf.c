@@ -20,7 +20,7 @@ int			hash(char ***fmt, va_list ap)
 	if (***fmt == 'o' || ***fmt == 'O')
 	{
 		write(1, "0", 1);
-		return ((print_o(ap)) + 1);
+		return ((print_o(ap, 1)) + 1);
 	}
 	else if (***fmt == 'x')
 	{
@@ -35,23 +35,52 @@ int			hash(char ***fmt, va_list ap)
 	return (0);
 }
 
+int			mult_options(char ***fmt, va_list ap)
+{
+	if (***fmt == '-')
+	{
+		**fmt += 1;
+		while (***fmt == ' ' || ***fmt == '0' || ***fmt == '-')
+			**fmt += 1;
+		if (***fmt == 'd' || ***fmt == 'i')
+			return (print_d(ap, 0));
+		else if (***fmt >= '1' || ***fmt >= '9')
+			return (space_d(&fmt, ap, 0));
+	}
+	else if (***fmt == '+')
+	{
+		**fmt += 1;
+		while (***fmt == '+' || ***fmt == ' ')
+			**fmt += 1;
+		if (***fmt == 'd' || ***fmt == 'i')
+			return (print_d(ap, 1));
+		else if (***fmt == '0')
+			return (zero_w(&fmt, ap, 1));
+	}
+	return (0);
+}
+
 int			extra_con(char ***fmt, va_list ap)
 {
-	if (***fmt >= '0')
-		return (zero_w(&fmt, ap));
-	else if (***fmt >= '1' && ***fmt >= '9')
-		return (0);
+	if (***fmt == '0')
+		return (zero_w(&fmt, ap, 0));
+	else if (***fmt >= '1' || ***fmt >= '9')
+		return (space_d(&fmt, ap, 1));
+	else if (***fmt == '%')
+			return (print_m());
 	return (0);
 }
 
 int			read_con(char **fmt, va_list ap)
 {
+	while (**fmt == ' ')
+		*fmt += 1;
 	if (**fmt == 's' || **fmt == 'S')
 		return (print_s(ap));
 	else if (**fmt == 'i' || **fmt == 'd')
-		return (print_d(ap));
+		return (print_d(ap, 0));
 	else if (**fmt == 'o' || **fmt == 'O')
-		return (print_o(ap));
+		return (print_o(ap, 0));
 	else if (**fmt == 'c' || **fmt == 'C')
 		return (print_c(ap));
 	else if (**fmt == 'x')
@@ -62,10 +91,10 @@ int			read_con(char **fmt, va_list ap)
 		return (print_p(ap));
 	else if (**fmt == 'u' || **fmt == 'U')
 		return (print_u(ap));
-	else if (**fmt == '%')
-		return (print_m());
 	else if (**fmt == '#')
 		return (hash(&fmt, ap));
+	else if (**fmt == '-' || **fmt == '+')
+		return (mult_options(&fmt, ap));
 	else
 		return (extra_con(&fmt, ap));
 	return (0);
@@ -84,8 +113,6 @@ int			ft_printf(const char *fmt, ...)
 		if (*x.format == '%')
 		{
 			x.format += 1;
-			while (*x.format == ' ')
-				x.format += 1;
 			if ((x.len = read_con(&x.format, ap)) == 0)
 				break ;
 			x.count += x.len;
@@ -101,10 +128,12 @@ int			ft_printf(const char *fmt, ...)
 	return (x.count);
 }
 
-int			main(void)
-{
-	char s[10] = "hola";
-	ft_printf("ft: %09d\n", 5656);
-	printf("Or: %09d\n", 5656);
-	return (1);
-}
+// int			main(void)
+// {
+// 	char s[19] = "hola pepe";
+// 	// printf("cantidad FT: %d\n", ft_printf("Ft: %15s\n", s));
+// 	// printf("cantidad OR: %d\n", printf("Or: %15s\n", s));
+// 	ft_printf("Ft: %-15s\n", s);
+// 	printf("Or: %-15s\n", s);
+// 	return (1);
+// }

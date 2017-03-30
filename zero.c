@@ -12,28 +12,49 @@
 
 #include "ft_printf.h"
 
-int			choose_zero(char ****fmt, va_list ap, t_head *z)
+int			value_space(t_head *z, int x)
 {
-	z->head_d.count = 0;
-	if (****fmt == 'd')
-		{
-			z->head_d.value = va_arg(ap, int);
-			z->head_d.str = ft_itoa(z->head_d.value);
-			z->head_d.flag = ft_strlen(z->head_d.str);
-			if( z->head_zero.ilen < z->head_d.flag)
-			{
-				z->head_zero.ilen = z->head_d.flag - z->head_zero.ilen;
-				while (++z->head_d.count != z->head_zero.ilen)
-					write(1,"0",1);
-				ft_putnbr(z->head_d.value);
-				return (z->head_zero.ilen +
-					(ft_strlen(ft_itoa(z->head_d.value))));
-			}
-		}
+	if( z->head_zero.num > z->head_d.flag)
+	{
+		z->head_zero.ilen = z->head_zero.num - z->head_d.flag - x;
+		while (++z->head_d.count != z->head_zero.ilen)
+			write(1,"0",1);
+			z->head_zero.num = z->head_zero.ilen +
+				(ft_strlen(ft_itoa(z->head_d.value)));
+			return (z->head_zero.ilen +
+				(ft_strlen(ft_itoa(z->head_d.value))));
+	}
 	return (0);
 }
 
-int			zero_w(char ****fmt, va_list ap)
+int			choose_zero(char ****fmt, va_list ap, t_head *z, int flag)
+{
+	z->head_d.count = -1;
+	if (****fmt == 'd' || ****fmt == 'i')
+	{
+		z->head_d.value = va_arg(ap, int);
+		if (z->head_d.value > 0 && flag == 1)
+			write (1, "+", 1);
+		z->head_d.str = ft_itoa(z->head_d.value);
+		z->head_d.flag = ft_strlen(z->head_d.str);
+		if(z->head_d.value < 0)
+		{
+			write (1, "-", 1);
+			z->head_d.value = z->head_d.value * (-1);
+		}
+		if (value_space(z, flag) > 0)
+		{
+			ft_putnbr(z->head_d.value);
+			return (z->head_zero.ilen +
+				(ft_strlen(ft_itoa(z->head_d.value))) + flag);
+		}
+		ft_putnbr(z->head_d.value);
+		return (number_len(z) + flag);
+	}
+	return (0);
+}
+
+int			zero_w(char ****fmt, va_list ap, int flag)
 {
 	t_head	*z;
 
@@ -47,6 +68,5 @@ int			zero_w(char ****fmt, va_list ap)
 		z->head_zero.ilen++;
 	}
 	z->head_zero.num = ft_atoi(z->head_zero.convert);
-	// printf("%d\n", z->head_zero.num);
-	return (choose_zero(fmt, ap, z));
+	return (choose_zero(fmt, ap, z, flag));
 }
