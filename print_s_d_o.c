@@ -85,7 +85,7 @@ int				print_d(va_list ap, int flag, int space)
 
 	i = (t_head*)malloc(sizeof(t_head));
 	i->head_d.value = va_arg(ap, int);
-	if (space == 1)
+	if (space == 1 && i->head_d.value > 0)
 		write (1, " ", 1);
 	if (i->head_d.value >= 0 && flag == 1)
 	{
