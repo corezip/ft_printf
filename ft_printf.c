@@ -130,12 +130,12 @@ int			ft_printf(const char *fmt, ...)
 	return (x.count);
 }
 
-int			main(void)
-{
-	// char s[19] = "hola pepe";
-	printf("cantidad FT: %d\n", ft_printf("FT: %1.3d\n", 42));
-	printf("cantidad OR: %d\n", printf("Or: %2.3i\n", 42));
-	// ft_printf("FT: %2.2d\n", 42);
-	// printf("OR: %2.2i\n", 42);
-	return (1);
-}
+// int			main(void)
+// {
+// 	// char s[19] = "hola pepe";
+// 	printf("cantidad FT: %d\n", ft_printf("FT: %1.3d\n", 42));
+// 	printf("cantidad OR: %d\n", printf("Or: %2.3i\n", 42));
+// 	// ft_printf("FT: %2.2d\n", 42);
+// 	// printf("OR: %2.2i\n", 42);
+// 	return (1);
+// }
