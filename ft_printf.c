@@ -81,8 +81,8 @@ int			read_con(char **fmt, va_list ap, int space)
 		*fmt += 1;
 		space = 1;
 	}
-	if (**fmt == 's' || **fmt == 'S')
-		return (print_s(ap));
+	// if (**fmt == 's' || **fmt == 'S')
+	// 	return (print_s(ap));
 	else if (**fmt == 'i' || **fmt == 'd')
 		return (print_d(ap, 0, space));
 	else if (**fmt == 'o' || **fmt == 'O')
