@@ -1,41 +1,26 @@
 NAME = libftprintf.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+SRC =	*.c
 
-CFLAG = -c -Wall -Werror -Wextra
-
-SRCS = ft_printf.c print_s_d_o.c print_p_m_u.c helper.c xnumber.c zero.c space.c\
-presition.c
-
-OBJS = $(SRCS:.c=.o)
-
-LIB_OBJS = libft/*.o
-
-RM = rm -f
-
-LIBS = ./libft/libft.a
-
-.PHONY: all clean fclean re
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(OBJS):
-	@gcc $(CFLAG) $(SRCS)
-
-$(LIB_OBJS):
-	@$(MAKE) -C ./libft
-
-$(NAME): $(OBJS) $(LIB_OBJS)
-	@ar rcs $(NAME) $(LIB_OBJS) $(OBJS)
+$(NAME):
+	@$(CC) $(CFLAGS) -c $? $(SRC)
+	@ar rc $(NAME) $? $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[32mFT_PRINTF: Built library. ~(˘▾˘~) \033[0m"
+	@echo "\033[32mLibft: Built library. ᕙ(⇀‸↼‶)ᕗ\033[0m"
 
 clean:
-	@/bin/rm -f $(OBJS)
-	@$(MAKE) -C ./libft/ clean
-	@echo "\033[32mFT_PRINTF: Cleaned up object files. ~(˘▾˘~) \033[0m"
+	@/bin/rm -f $(OBJ)
+	@echo "\033[32mLibft: Cleaned up object files. ᕙ(⇀‸↼‶)ᕗ\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@$(MAKE) -C ./libft/ fclean
-	@echo "\033[32mFT_PRINTF: Cleaned up compiled files. ~(˘▾˘~) \033[0m"
+	@echo "\033[32mLibft: Cleaned up compiled files. ᕙ(⇀‸↼‶)ᕗ\033[0m"
 
 re: fclean all
+
+.PHONY: all clean fclean re
