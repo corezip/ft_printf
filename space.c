@@ -119,7 +119,7 @@ int				space_d(char ****fmt, va_list ap, int flag)
 	}
 	x->head_pr.space = ft_atoi(x->head_pr.str);
 	if (****fmt == '.')
-		return (0);
+		return (values_presition(&fmt, ap, x, flag));
 	else if (****fmt == 'd' || ****fmt == 'i')
 		return (pre_d_s(x, ap, flag));
 	else if (****fmt == 's' || ****fmt == 'S')
