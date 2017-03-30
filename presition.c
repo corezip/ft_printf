@@ -23,7 +23,7 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 		ft_putnbr(value);
 		return (x->head_pr.presition);
 	}
-	return (0);
+	return (flag);
 }
 
 //x->head_pr.space tiene el valor del primer entero detras del punto.
