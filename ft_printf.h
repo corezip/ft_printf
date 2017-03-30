@@ -104,13 +104,14 @@ typedef	struct			s_head
 int						ft_printf(const char *fmt, ...);
 int						print_s(va_list ap);
 int						print_c(va_list ap);
-int						print_d(va_list ap, int flag);
+int						print_d(va_list ap, int flag, int space);
 int						print_o(va_list ap, int flag);
 int						print_x(va_list ap);
 int						print_x_upper(va_list ap);
 int						print_p(va_list ap);
 int						print_u(va_list ap);
 int						print_m();
+int						read_con(char **fmt, va_list ap, int space);
 void					un_putnbr(unsigned int n);
 char					*reverse_array(char *s);
 char					*ft_strlowcase(char *str);

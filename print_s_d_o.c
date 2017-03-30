@@ -79,12 +79,14 @@ int				print_c(va_list ap)
 	return (1);
 }
 
-int				print_d(va_list ap, int flag)
+int				print_d(va_list ap, int flag, int space)
 {
 	t_head		*i;
 
 	i = (t_head*)malloc(sizeof(t_head));
 	i->head_d.value = va_arg(ap, int);
+	if (space == 1)
+		write (1, " ", 1);
 	if (i->head_d.value >= 0 && flag == 1)
 	{
 		write(1, "+", 1);

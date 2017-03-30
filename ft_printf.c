@@ -43,7 +43,7 @@ int			mult_options(char ***fmt, va_list ap)
 		while (***fmt == ' ' || ***fmt == '0' || ***fmt == '-')
 			**fmt += 1;
 		if (***fmt == 'd' || ***fmt == 'i')
-			return (print_d(ap, 0));
+			return (print_d(ap, 0, 0));
 		else if (***fmt >= '1' || ***fmt >= '9')
 			return (space_d(&fmt, ap, 0));
 	}
@@ -53,7 +53,7 @@ int			mult_options(char ***fmt, va_list ap)
 		while (***fmt == '+' || ***fmt == ' ')
 			**fmt += 1;
 		if (***fmt == 'd' || ***fmt == 'i')
-			return (print_d(ap, 1));
+			return (print_d(ap, 1, 0));
 		else if (***fmt == '0')
 			return (zero_w(&fmt, ap, 1));
 	}
@@ -64,6 +64,10 @@ int			extra_con(char ***fmt, va_list ap)
 {
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
+		else if (***fmt == 'x')
+			return (print_x(ap));
+		else if (***fmt == 'X')
+			return (print_x_upper(ap));
 	else if (***fmt >= '1' || ***fmt >= '9')
 		return (space_d(&fmt, ap, 1));
 	else if (***fmt == '%')
@@ -71,22 +75,21 @@ int			extra_con(char ***fmt, va_list ap)
 	return (0);
 }
 
-int			read_con(char **fmt, va_list ap)
+int			read_con(char **fmt, va_list ap, int space)
 {
 	while (**fmt == ' ')
+	{
 		*fmt += 1;
+		space = 1;
+	}
 	if (**fmt == 's' || **fmt == 'S')
 		return (print_s(ap));
 	else if (**fmt == 'i' || **fmt == 'd')
-		return (print_d(ap, 0));
+		return (print_d(ap, 0, space));
 	else if (**fmt == 'o' || **fmt == 'O')
 		return (print_o(ap, 0));
 	else if (**fmt == 'c' || **fmt == 'C')
 		return (print_c(ap));
-	else if (**fmt == 'x')
-		return (print_x(ap));
-	else if (**fmt == 'X')
-		return (print_x_upper(ap));
 	else if (**fmt == 'p')
 		return (print_p(ap));
 	else if (**fmt == 'u' || **fmt == 'U')
@@ -113,7 +116,7 @@ int			ft_printf(const char *fmt, ...)
 		if (*x.format == '%')
 		{
 			x.format += 1;
-			if ((x.len = read_con(&x.format, ap)) == 0)
+			if ((x.len = read_con(&x.format, ap, 0)) == 0)
 				break ;
 			x.count += x.len;
 		}
@@ -131,9 +134,9 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	char s[19] = "hola pepe";
-// 	// printf("cantidad FT: %d\n", ft_printf("Ft: %15s\n", s));
-// 	// printf("cantidad OR: %d\n", printf("Or: %15s\n", s));
-// 	ft_printf("Ft: %-15s\n", s);
-// 	printf("Or: %-15s\n", s);
+// 	// printf("cantidad FT: %d\n", ft_printf("Ft: %+04d\n", 42));
+// 	// printf("cantidad OR: %d\n", printf("Or: %+04d\n", 42));
+// 	ft_printf("FT: %      i\n", 42);
+// 	printf("OR: %      i\n", 42);
 // 	return (1);
 // }
