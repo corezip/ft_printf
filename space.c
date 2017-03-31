@@ -106,7 +106,7 @@ int				pre_d_s(t_head *x, va_list ap, int flag)
 		return(print_d_negative(x));
 }
 
-int				space_d(char ****fmt, va_list ap, int flag)
+int				space_d(char ****fmt, va_list ap, int flag, int i)
 {
 	t_head		*x;
 
@@ -121,7 +121,7 @@ int				space_d(char ****fmt, va_list ap, int flag)
 	if (****fmt == '.')
 		return (values_presition(&fmt, ap, x, flag));
 	if (****fmt == 'd' || ****fmt == 'i')
-		return (pre_d_s(x, ap, flag));
+		return (pre_d_s(x, ap, i));
 	else if (****fmt == 's' || ****fmt == 'S')
 		return (pre_s(x, ap, flag));
 	return (0);

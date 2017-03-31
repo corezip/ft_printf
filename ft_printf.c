@@ -45,7 +45,7 @@ int			mult_options(char ***fmt, va_list ap)
 		if (***fmt == 'd' || ***fmt == 'i')
 			return (print_d(ap, 0, 0));
 		else if (***fmt >= '1' || ***fmt >= '9')
-			return (space_d(&fmt, ap, 1));
+			return (space_d(&fmt, ap, 0, 1));
 	}
 	else if (***fmt == '+')
 	{
@@ -69,7 +69,7 @@ int			extra_con(char ***fmt, va_list ap, int flag)
 		else if (***fmt == 'X')
 			return (print_x_upper(ap));
 	else if (***fmt >= '1' || ***fmt >= '9')
-		return (space_d(&fmt, ap, flag));
+		return (space_d(&fmt, ap, flag, 0));
 	else if (***fmt == '%')
 			return (print_m());
 	return (0);

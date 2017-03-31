@@ -125,7 +125,7 @@ int						zero_w(char ****fmt, va_list ap, int flag);
 int						dot_zer(char *****fmt, va_list ap, t_head *z, int flag);
 int						number_len(t_head *i);
 int						mult_options(char ***fmt, va_list ap);
-int						space_d(char ****fmt, va_list ap, int flag);
+int						space_d(char ****fmt, va_list ap, int flag, int i);
 int						print_d_positive(t_head *x);
 int						pre_d_s(t_head *x, va_list ap, int flag);
 int						print_d_negative(t_head *x);
