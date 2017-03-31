@@ -81,9 +81,9 @@ int			read_con(char **fmt, va_list ap, int space)
 		*fmt += 1;
 		space = 1;
 	}
-	// if (**fmt == 's' || **fmt == 'S')
-	// 	return (print_s(ap));
-	if (**fmt == 'i' || **fmt == 'd')
+	if (**fmt == 's' || **fmt == 'S')
+		return (print_s(ap));
+	else if (**fmt == 'i' || **fmt == 'd')
 		return (print_d(ap, 0, space));
 	else if (**fmt == 'o' || **fmt == 'O')
 		return (print_o(ap, 0));
@@ -133,9 +133,9 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	printf("cantidad FT: %d\n", ft_printf("FT: %1.3d\n", 42));
-// 	printf("cantidad OR: %d\n", printf("Or: %2.3i\n", 42));
-// 	// ft_printf("FT: %2.2d\n", 42);
-// 	// printf("OR: %2.2i\n", 42);
+// 	// printf("cantidad FT: %d\n", ft_printf("FT: |%1.2d\n", 1));
+// 	// printf("cantidad OR: %d\n", printf("Or: |%1.2i\n", 1));
+// 	// ft_printf("FT: |%4.4d\n", 42);
+// 	printf("OR: |%4.2d\n", 42);
 // 	return (1);
 // }

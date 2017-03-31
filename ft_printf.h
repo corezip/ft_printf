@@ -127,7 +127,9 @@ int						print_d_positive(t_head *x);
 int						pre_d_s(t_head *x, va_list ap, int flag);
 int						print_d_negative(t_head *x);
 int						pre_s(t_head *x, va_list ap, int flag);
-int						values_presition(char *****fmt, va_list ap,t_head *x, int flag);
+int						values_presition(char *****fmt, va_list ap,
+	t_head *x, int flag);
 int						equal_less_d(int value, t_head *x, int flag, int count);
+int						plus_d(int value, t_head *x, int flag, int count);
 
 #endif
