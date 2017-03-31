@@ -60,7 +60,7 @@ int			mult_options(char ***fmt, va_list ap)
 	return (0);
 }
 
-int			extra_con(char ***fmt, va_list ap)
+int			extra_con(char ***fmt, va_list ap, int flag)
 {
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
@@ -69,7 +69,7 @@ int			extra_con(char ***fmt, va_list ap)
 		else if (***fmt == 'X')
 			return (print_x_upper(ap));
 	else if (***fmt >= '1' || ***fmt >= '9')
-		return (space_d(&fmt, ap, 1));
+		return (space_d(&fmt, ap, flag));
 	else if (***fmt == '%')
 			return (print_m());
 	return (0);
@@ -99,7 +99,7 @@ int			read_con(char **fmt, va_list ap, int space)
 	else if (**fmt == '-' || **fmt == '+')
 		return (mult_options(&fmt, ap));
 	else
-		return (extra_con(&fmt, ap));
+		return (extra_con(&fmt, ap, space));
 	return (0);
 }
 
@@ -134,9 +134,10 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	// printf("cantidad FT: %d\n", ft_printf("FT: |%9.3d\n", 23));
-// 	// printf("cantidad OR: %d\n", printf("Or: |%9.3i\n", 23));
-// 	ft_printf("FT: |%s\n", NULL);
-// 	printf("OR: |%s\n", NULL);
+// 	printf("cantidad FT: %d\n", ft_printf("FT: |%04.3i\n", 23));
+// 	printf("cantidad OR: %d\n", printf("Or: |%04.3i\n", 23));
+// 	// ft_printf("FT: |%04.3i\n", 42);
+// 	// printf("OR: |%04.3i\n", 42);
+// 	// printf("OR: |%04.3i\n", 42);
 // 	return (1);
 // }

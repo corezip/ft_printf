@@ -2,7 +2,6 @@
 #include "ft_printf.h"
 int				extra_d(int value, t_head *x, int flag, int count)
 {
-	//x->head_pr.calc -- longitud del argumento
 	flag = 1;
 	x->head_pr.space = x->head_pr.space - x->head_pr.presition;
 	while (count != x->head_pr.space)
@@ -27,7 +26,6 @@ int				extra_d(int value, t_head *x, int flag, int count)
 
 int				plus_d(int value, t_head *x, int flag, int count)
 {
-	flag = 1;
 	x->head_pr.calc = ft_strlen(ft_itoa(value));
 	if (x->head_pr.calc >= x->head_pr.space)
 	{
@@ -48,13 +46,13 @@ int				plus_d(int value, t_head *x, int flag, int count)
 		ft_putnbr(value);
 		return (x->head_d.len + x->head_pr.space);
 	}
-	else
-		return (extra_d(value, x, flag, count));
+	return (extra_d(value, x, flag, count));
 }
 
 int				equal_less_d(int value, t_head *x, int flag, int count)
 {
-	flag = 1;
+	if (flag == 1)
+		write(1, " ", 1);
 	x->head_pr.calc = ft_strlen(ft_itoa(value));
 	if (x->head_pr.calc >= x->head_pr.presition)
 	{
@@ -72,6 +70,8 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 			count += 1;
 		}
 		ft_putnbr(value);
+		if (flag == 1)
+			return (x->head_d.len + x->head_pr.presition + 1);
 		return (x->head_d.len + x->head_pr.presition);
 	}
 	return (0);
@@ -93,7 +93,7 @@ int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 		****fmt += 1;
 	}
 	x->head_pr.presition = ft_atoi(x->head_pr.str);
-	if (*****fmt == 'd')
+	if (*****fmt == 'd' || *****fmt == 'i')
 	{
 		if (x->head_pr.space <= x->head_pr.presition)
 			return (equal_less_d(va_arg(ap, int), x, flag, 0));
