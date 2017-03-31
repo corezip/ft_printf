@@ -100,5 +100,9 @@ int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 		else if (x->head_pr.space > x->head_pr.presition)
 			return (plus_d(va_arg(ap, int), x, flag, 0));
 	}
+	else if (*****fmt == 's' || *****fmtfmt == 'i')
+	{
+		write (1, "pendejo", 7);
+	}
 	return (0);
 }

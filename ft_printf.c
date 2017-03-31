@@ -131,13 +131,16 @@ int			ft_printf(const char *fmt, ...)
 	return (x.count);
 }
 
+/*
+** Checar dot_zer tiene fallas al hacer el calculo de X y Y
+*/
+
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	// printf("cantidad FT: %d\n", ft_printf("FT: |%5d\n", 23));
-// 	// printf("cantidad OR: %d\n", printf("Or: |%5d\n", 23));
-// 	ft_printf("FT: |%5d\n", 42);
-// 	printf("OR: |%5d\n", 42);
-// 	// printf("OR: |%04.3i\n", 42);
+// 	printf("cantidad FT: %d\n", ft_printf("FT: |%0i\n", -23));
+// 	printf("cantidad OR: %d\n", printf("Or: |%0i\n", -23));
+// 	// ft_printf("FT: |%0i\n", -42);
+// 	// printf("OR: |%0i\n", -42);
 // 	return (1);
 // }

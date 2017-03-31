@@ -32,7 +32,7 @@ int			value_space(t_head *z, int x)
 int			dot_zer(char *****fmt, va_list ap, t_head *x, int flag)
 {
 	****fmt += 1;
-	x->head_pr.presition = x->head_zero.num;
+	x->head_pr.space = x->head_zero.num;
 	x->head_pr.i = 0;
 	ft_bzero(x->head_pr.str, 99);
 	while (*****fmt >= '0' && *****fmt <= '9')
@@ -59,18 +59,17 @@ int			choose_zero(char ****fmt, va_list ap, t_head *z, int flag)
 		z->head_d.value = va_arg(ap, int);
 		if (z->head_d.value > 0 && flag == 1)
 			write (1, "+", 1);
-		z->head_d.str = ft_itoa(z->head_d.value);
-		z->head_d.flag = ft_strlen(z->head_d.str);
+		z->head_d.flag = ft_strlen(ft_itoa(z->head_d.value));
 		if(z->head_d.value < 0)
 		{
 			write (1, "-", 1);
 			z->head_d.value = z->head_d.value * (-1);
+			flag += 1;
 		}
 		if (value_space(z, flag) > 0)
 		{
 			ft_putnbr(z->head_d.value);
-			return (z->head_zero.ilen +
-				(ft_strlen(ft_itoa(z->head_d.value))) + flag);
+			return ((z->head_zero.ilen + z->head_d.flag) + flag);
 		}
 		ft_putnbr(z->head_d.value);
 		return (number_len(z) + flag);
