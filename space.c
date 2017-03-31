@@ -62,8 +62,8 @@ int				print_d_negative(t_head *x)
 	else
 	{
 		x->head_d.count = 0;
-		x->head_d.len = x->head_pr.space - x->head_d.len;
 		ft_putstr(x->head_d.str);
+		x->head_d.len = x->head_pr.space - x->head_d.len;
 		while (x->head_d.len != x->head_d.count)
 		{
 			write (1, " ", 1);

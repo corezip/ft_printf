@@ -134,10 +134,10 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	printf("cantidad FT: %d\n", ft_printf("FT: |%04.3i\n", 23));
-// 	printf("cantidad OR: %d\n", printf("Or: |%04.3i\n", 23));
-// 	// ft_printf("FT: |%04.3i\n", 42);
-// 	// printf("OR: |%04.3i\n", 42);
+// 	printf("cantidad FT: %d\n", ft_printf("FT: |%5d\n", 23));
+// 	printf("cantidad OR: %d\n", printf("Or: |%5d\n", 23));
+// 	// ft_printf("FT: |%-5d\n", -42);
+// 	// printf("OR: |%-5d\n", -42);
 // 	// printf("OR: |%04.3i\n", 42);
 // 	return (1);
 // }
