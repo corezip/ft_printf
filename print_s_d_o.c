@@ -65,6 +65,11 @@ int				print_s(va_list ap)
 
 	s = (t_head*)malloc(sizeof(t_head));
 	s->head_s.value = va_arg(ap, char *);
+	if (s->head_s.value == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
 	ft_putstr(s->head_s.value);
 	i = ft_strlen(s->head_s.value);
 	return (i);
@@ -94,5 +99,5 @@ int				print_d(va_list ap, int flag, int space)
 		return (number_len(i) + 1);
 	}
 	ft_putnbr(i->head_d.value);
-	return (number_len(i));
+	return (number_len(i) + space);
 }

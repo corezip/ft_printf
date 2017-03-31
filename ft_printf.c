@@ -64,7 +64,8 @@ int			extra_con(char ***fmt, va_list ap)
 {
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
-		// else if (***fmt == 'x6')6d			// return (print_x(ap));
+		else if (***fmt == 'x')
+			return (print_x(ap));
 		else if (***fmt == 'X')
 			return (print_x_upper(ap));
 	else if (***fmt >= '1' || ***fmt >= '9')
@@ -133,9 +134,9 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	// printf("cantidad FT: %d\n", ft_printf("FT: |%1.2d\n", 1));
-// 	// printf("cantidad OR: %d\n", printf("Or: |%1.2i\n", 1));
-// 	// ft_printf("FT: |%4.4d\n", 42);
-// 	printf("OR: |%4.2d\n", 42);
+// 	// printf("cantidad FT: %d\n", ft_printf("FT: |%9.3d\n", 23));
+// 	// printf("cantidad OR: %d\n", printf("Or: |%9.3i\n", 23));
+// 	ft_printf("FT: |%s\n", NULL);
+// 	printf("OR: |%s\n", NULL);
 // 	return (1);
 // }

@@ -26,6 +26,7 @@ typedef	struct			s_pres
 	int				space;
 	int				presition;
 	int				i;
+	int				calc;
 	char			str[100];
 }						t_pres;
 
@@ -131,5 +132,6 @@ int						values_presition(char *****fmt, va_list ap,
 	t_head *x, int flag);
 int						equal_less_d(int value, t_head *x, int flag, int count);
 int						plus_d(int value, t_head *x, int flag, int count);
+int						extra_d(int value, t_head *x, int flag, int count);
 
 #endif
