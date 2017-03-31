@@ -100,7 +100,7 @@ int				pre_d_s(t_head *x, va_list ap, int flag)
 	x->head_d.value = va_arg(ap, int);
 	x->head_d.str = ft_itoa(x->head_d.value);
 	x->head_d.len = ft_strlen(x->head_d.str);
-	if (flag == 1)
+	if (flag == 0)
 		return(print_d_positive(x));
 	else
 		return(print_d_negative(x));
@@ -120,7 +120,7 @@ int				space_d(char ****fmt, va_list ap, int flag)
 	x->head_pr.space = ft_atoi(x->head_pr.str);
 	if (****fmt == '.')
 		return (values_presition(&fmt, ap, x, flag));
-	else if (****fmt == 'd' || ****fmt == 'i')
+	if (****fmt == 'd' || ****fmt == 'i')
 		return (pre_d_s(x, ap, flag));
 	else if (****fmt == 's' || ****fmt == 'S')
 		return (pre_s(x, ap, flag));
