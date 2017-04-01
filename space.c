@@ -112,6 +112,7 @@ int				space_d(char ****fmt, va_list ap, int flag, int i)
 
 	x = (t_head*)malloc(sizeof(t_head));
 	x->head_pr.i = 0;
+	x->head_pr.negative = i;
 	while (****fmt >= '0' && ****fmt <= '9')
 	{
 		x->head_pr.str[x->head_pr.i++] = ****fmt + 0;
@@ -123,6 +124,11 @@ int				space_d(char ****fmt, va_list ap, int flag, int i)
 	if (****fmt == 'd' || ****fmt == 'i')
 		return (pre_d_s(x, ap, i));
 	else if (****fmt == 's' || ****fmt == 'S')
-		return (pre_s(x, ap, flag));
+	{
+		if (i == 1)
+			return (values_presition(&fmt, ap, x, flag));
+		else
+			return (pre_s(x, ap, flag));
+	}
 	return (0);
 }

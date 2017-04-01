@@ -27,6 +27,7 @@ typedef	struct			s_pres
 	int				presition;
 	int				i;
 	int				calc;
+	int				negative;
 	char			str[100];
 }						t_pres;
 
@@ -103,7 +104,7 @@ typedef	struct			s_head
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);
-int						print_s(va_list ap);
+int						print_s(char *s);
 int						print_c(va_list ap);
 int						print_d(va_list ap, int flag, int space);
 int						print_o(va_list ap, int flag);
@@ -135,5 +136,7 @@ int						values_presition(char *****fmt, va_list ap,
 int						equal_less_d(int value, t_head *x, int flag, int count);
 int						plus_d(int value, t_head *x, int flag, int count);
 int						extra_d(int value, t_head *x, int flag, int count);
+int						s_values(char *s, t_head *x, int flag, int negative);
+int						second_option(char *s, t_head *x);
 
 #endif

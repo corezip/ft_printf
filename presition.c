@@ -1,5 +1,5 @@
-
 #include "ft_printf.h"
+
 int				extra_d(int value, t_head *x, int flag, int count)
 {
 	flag = 1;
@@ -77,6 +77,15 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 	return (0);
 }
 
+int				helper_s(va_list ap, t_head *x,int flag, int negative)
+{
+	char *s;
+
+	s = va_arg(ap, char*);
+	x->head_s.len = ft_strlen(s);
+	return (s_values(s, x, flag, negative));
+}
+
 /*
 **        x->head_pr.space tiene el valor del primer entero detras del punto.
 **        X = x->head_pr.space
@@ -101,8 +110,6 @@ int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 			return (plus_d(va_arg(ap, int), x, flag, 0));
 	}
 	else if (*****fmt == 's' || *****fmt == 'i')
-	{
-		write (1, "pendejo", 7);
-	}
+		return (helper_s(ap, x, flag, x->head_pr.negative));
 	return (0);
 }

@@ -83,7 +83,7 @@ int			read_con(char **fmt, va_list ap, int space)
 		space = 1;
 	}
 	if (**fmt == 's' || **fmt == 'S')
-		return (print_s(ap));
+		return (print_s(va_arg(ap, char*)));
 	else if (**fmt == 'i' || **fmt == 'd')
 		return (print_d(ap, 0, space));
 	else if (**fmt == 'o' || **fmt == 'O')
@@ -138,9 +138,9 @@ int			ft_printf(const char *fmt, ...)
 // int			main(void)
 // {
 // 	// char s[19] = "hola pepe";
-// 	printf("cantidad FT: %d\n", ft_printf("FT: |%0i\n", -23));
-// 	printf("cantidad OR: %d\n", printf("Or: |%0i\n", -23));
-// 	// ft_printf("FT: |%0i\n", -42);
-// 	// printf("OR: |%0i\n", -42);
+// 	printf("cantidad FT: %d\n", ft_printf("FT: |%-5.3s\n", "LYDI"));
+// 	printf("cantidad OR: %d\n", printf("Or: |%-5.3s\n", "LYDI"));
+// 	// ft_printf("FT: |%-12.21s\n", s);
+// 	// printf("OR: |%-12.21s\n",s);
 // 	return (1);
 // }

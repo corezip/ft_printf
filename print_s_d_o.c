@@ -58,20 +58,17 @@ int				print_o(va_list ap, int flag)
 	return (o->head_o.i);
 }
 
-int				print_s(va_list ap)
+int				print_s(char *s)
 {
-	t_head		*s;
 	int			i;
 
-	s = (t_head*)malloc(sizeof(t_head));
-	s->head_s.value = va_arg(ap, char *);
-	if (s->head_s.value == NULL)
+	if (s == NULL)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-	ft_putstr(s->head_s.value);
-	i = ft_strlen(s->head_s.value);
+	ft_putstr(s);
+	i = ft_strlen(s);
 	return (i);
 }
 
