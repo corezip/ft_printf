@@ -26,7 +26,7 @@ int				third_option(char *s, t_head *x)
 int				four_option(char *s, t_head *x)
 {
 	x->head_s.count = 0;
-	x->head_x.i = 1;
+	x->head_x.i = 0;
 	while (x->head_s.count < x->head_pr.presition)
 	{
 		write(1, &s[x->head_s.count], 1);
@@ -34,7 +34,7 @@ int				four_option(char *s, t_head *x)
 		x->head_x.i +=1;
 	}
 	x->head_s.count = 0;
-	while (x->head_s.count != (x->head_pr.space - x->head_s.len))
+	while (x->head_s.count <= (x->head_pr.space - x->head_s.len))
 	{
 		write(1, " ", 1);
 		x->head_s.count += 1;
