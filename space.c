@@ -14,7 +14,7 @@ int				print_s_negative(t_head *x)
 		ft_putstr(x->head_s.value);
 		while (x->head_s.len != x->head_s.count)
 		{
-			write (1, " ", 1);
+			write(1, " ", 1);
 			x->head_s.count += 1;
 		}
 		return (x->head_pr.space);
@@ -34,7 +34,7 @@ int				print_s_positive(t_head *x)
 		x->head_s.len = x->head_pr.space - x->head_s.len;
 		while (x->head_s.len != x->head_s.count)
 		{
-			write (1, " ", 1);
+			write(1, " ", 1);
 			x->head_s.count += 1;
 		}
 		ft_putstr(x->head_s.value);
@@ -47,9 +47,9 @@ int				pre_s(t_head *x, va_list ap, int flag)
 	x->head_s.value = va_arg(ap, char*);
 	x->head_s.len = ft_strlen(x->head_s.value);
 	if (flag == 1)
-		return(print_s_positive(x));
+		return (print_s_positive(x));
 	else
-		return(print_s_negative(x));
+		return (print_s_negative(x));
 }
 
 int				print_d_negative(t_head *x)
@@ -66,7 +66,7 @@ int				print_d_negative(t_head *x)
 		x->head_d.len = x->head_pr.space - x->head_d.len;
 		while (x->head_d.len != x->head_d.count)
 		{
-			write (1, " ", 1);
+			write(1, " ", 1);
 			x->head_d.count += 1;
 		}
 		return (x->head_pr.space);
@@ -87,23 +87,27 @@ int				print_d_positive(t_head *x)
 		x->head_d.len = x->head_pr.space - x->head_d.len;
 		while (x->head_d.len != x->head_d.count)
 		{
-			write (1, " ", 1);
+			write(1, " ", 1);
 			x->head_d.count += 1;
 		}
 		ft_putstr(x->head_d.str);
 		return (x->head_pr.space);
 	}
 }
-//x->head_pr.space tiene el valor de los espacios que piden poner.
+
+/*
+**x->head_pr.space tiene el valor de los espacios que piden poner.
+*/
+
 int				pre_d_s(t_head *x, va_list ap, int flag)
 {
 	x->head_d.value = va_arg(ap, int);
 	x->head_d.str = ft_itoa(x->head_d.value);
 	x->head_d.len = ft_strlen(x->head_d.str);
 	if (flag == 0)
-		return(print_d_positive(x));
+		return (print_d_positive(x));
 	else
-		return(print_d_negative(x));
+		return (print_d_negative(x));
 }
 
 int				space_d(char ****fmt, va_list ap, int flag, int i)

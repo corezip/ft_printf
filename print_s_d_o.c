@@ -33,29 +33,13 @@ int				number_len(t_head *i)
 int				print_o(va_list ap, int flag)
 {
 	t_head		*o;
+	char		*s;
+	int			n;
 
-	o = (t_head*)malloc(sizeof(t_head));
-	o->head_o.i = 1;
-	o->head_o.octal = 1;
-	o->head_o.n = va_arg(ap, int);
-	if (o->head_o.n == 0 && flag == 1)
-		return (1);
-	o->head_o.x = o->head_o.n;
-	while (o->head_o.n != 0)
-	{
-		o->head_o.remainder = o->head_o.n % 8;
-		o->head_o.n = o->head_o.n / 8;
-		o->head_o.octal = o->head_o.octal + (o->head_o.remainder * o->head_o.i);
-		o->head_o.i = o->head_o.i * 10;
-	}
-	ft_putnbr(o->head_o.octal - 1);
-	o->head_o.i = 1;
-	while (o->head_o.x / 10 > 0)
-	{
-		o->head_o.x = o->head_o.x / 10;
-		o->head_o.i++;
-	}
-	return (o->head_o.i);
+	n = va_arg(ap, int);
+	s = ft_itoa_base(n, 8);
+	ft_putstr(s);
+	return (ft_strlen(s));
 }
 
 int				print_s(char *s)
@@ -88,7 +72,7 @@ int				print_d(va_list ap, int flag, int space)
 	i = (t_head*)malloc(sizeof(t_head));
 	i->head_d.value = va_arg(ap, int);
 	if (space == 1 && i->head_d.value > 0)
-		write (1, " ", 1);
+		write(1, " ", 1);
 	if (i->head_d.value >= 0 && flag == 1)
 	{
 		write(1, "+", 1);

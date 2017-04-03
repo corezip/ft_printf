@@ -138,5 +138,7 @@ int						plus_d(int value, t_head *x, int flag, int count);
 int						extra_d(int value, t_head *x, int flag, int count);
 int						s_values(char *s, t_head *x, int flag, int negative);
 int						second_option(char *s, t_head *x);
+char					*ft_itoa_base(int value, int base);
+int						ft_pow(int nb, int pow);
 
 #endif

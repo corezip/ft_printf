@@ -30,8 +30,8 @@ int				four_option(char *s, t_head *x)
 	while (x->head_s.count < x->head_pr.presition)
 	{
 		write(1, &s[x->head_s.count], 1);
-		x->head_s.count +=1;
-		x->head_x.i +=1;
+		x->head_s.count += 1;
+		x->head_x.i += 1;
 	}
 	x->head_s.count = 0;
 	while (x->head_s.count <= (x->head_pr.space - x->head_s.len))

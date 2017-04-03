@@ -14,21 +14,22 @@
 
 int			value_space(t_head *z, int x)
 {
-	if( z->head_zero.num > z->head_d.flag)
+	if (z->head_zero.num > z->head_d.flag)
 	{
 		z->head_zero.ilen = z->head_zero.num - z->head_d.flag - x;
 		while (++z->head_d.count != z->head_zero.ilen)
-			write(1,"0",1);
-			z->head_zero.num = z->head_zero.ilen +
-				(ft_strlen(ft_itoa(z->head_d.value)));
-			return (z->head_zero.ilen +
-				(ft_strlen(ft_itoa(z->head_d.value))));
+			write(1, "0", 1);
+		z->head_zero.num = z->head_zero.ilen +
+		(ft_strlen(ft_itoa(z->head_d.value)));
+		return (z->head_zero.ilen + (ft_strlen(ft_itoa(z->head_d.value))));
 	}
 	return (0);
 }
+
 /*
 ** x->head_pr.presition =z->head_zero.num;
 */
+
 int			dot_zer(char *****fmt, va_list ap, t_head *x, int flag)
 {
 	****fmt += 1;
@@ -58,11 +59,11 @@ int			choose_zero(char ****fmt, va_list ap, t_head *z, int flag)
 	{
 		z->head_d.value = va_arg(ap, int);
 		if (z->head_d.value > 0 && flag == 1)
-			write (1, "+", 1);
+			write(1, "+", 1);
 		z->head_d.flag = ft_strlen(ft_itoa(z->head_d.value));
-		if(z->head_d.value < 0)
+		if (z->head_d.value < 0)
 		{
-			write (1, "-", 1);
+			write(1, "-", 1);
 			z->head_d.value = z->head_d.value * (-1);
 			flag += 1;
 		}

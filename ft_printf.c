@@ -64,14 +64,14 @@ int			extra_con(char ***fmt, va_list ap, int flag)
 {
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
-		else if (***fmt == 'x')
-			return (print_x(ap));
-		else if (***fmt == 'X')
-			return (print_x_upper(ap));
+	else if (***fmt == 'x')
+		return (print_x(ap));
+	else if (***fmt == 'X')
+		return (print_x_upper(ap));
 	else if (***fmt >= '1' || ***fmt >= '9')
 		return (space_d(&fmt, ap, flag, 0));
 	else if (***fmt == '%')
-			return (print_m());
+		return (print_m());
 	return (0);
 }
 
@@ -110,7 +110,7 @@ int			ft_printf(const char *fmt, ...)
 
 	x.count = 0;
 	va_start(ap, fmt);
-	x.format = (char*) fmt;
+	x.format = (char*)fmt;
 	while (*x.format)
 	{
 		if (*x.format == '%')
@@ -130,17 +130,3 @@ int			ft_printf(const char *fmt, ...)
 	va_end(ap);
 	return (x.count);
 }
-
-/*
-** Checar dot_zer tiene fallas al hacer el calculo de X y Y
-*/
-
-// int			main(void)
-// {
-// 	// char s[19] = "hola pepe";
-// 	printf("cantidad FT: %d\n", ft_printf("FT: |%-5.3s\n", "LYDI"));
-// 	printf("cantidad OR: %d\n", printf("Or: |%-5.3s\n", "LYDI"));
-// 	// ft_printf("FT: |%-12.21s\n", s);
-// 	// printf("OR: |%-12.21s\n",s);
-// 	return (1);
-// }

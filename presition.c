@@ -38,7 +38,7 @@ int				plus_d(int value, t_head *x, int flag, int count)
 		x->head_pr.calc = x->head_pr.space - x->head_pr.calc;
 		if (x->head_pr.calc < 0)
 			x->head_pr.calc = (x->head_pr.calc * -1) - 1;
-		while(count != x->head_pr.calc)
+		while (count != x->head_pr.calc)
 		{
 			write(1, " ", 1);
 			count += 1;
@@ -64,7 +64,7 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 		x->head_pr.calc = x->head_pr.presition - x->head_pr.calc;
 		if (x->head_pr.calc < 0)
 			x->head_pr.calc = (x->head_pr.calc * -1) - 1;
-		while(count != x->head_pr.calc)
+		while (count != x->head_pr.calc)
 		{
 			write(1, "0", 1);
 			count += 1;
@@ -77,7 +77,7 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 	return (0);
 }
 
-int				helper_s(va_list ap, t_head *x,int flag, int negative)
+int				helper_s(va_list ap, t_head *x, int flag, int negative)
 {
 	char *s;
 
@@ -91,6 +91,7 @@ int				helper_s(va_list ap, t_head *x,int flag, int negative)
 **        X = x->head_pr.space
 **        Y = x->head_pr.presition
 */
+
 int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 {
 	****fmt += 1;
