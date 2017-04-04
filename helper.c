@@ -12,40 +12,38 @@
 
 #include "ft_printf.h"
 
-int				ft_pow(int nb, int pow)
+char    *ft_itoa_base(int n, int b)
 {
-	if (pow == 0)
-		return (1);
-	else
-		return (nb * ft_pow(nb, pow - 1));
+	char    *num;
+	size_t    size;
+	int        neg;
+	int        mod;
+
+	neg = 0;
+	size = ft_digitnum(n, b);
+	if (n < 0 && b == 10)
+		neg++;
+	num = ft_strnew(size);
+	if (neg)
+		num[0] = '-';
+	num[size + neg] = 0;
+	while (size--)
+	{
+		mod = ((n % b) < 0 ? -(n % b) : (n % b));
+		num[size + neg] = ((mod > 9) ? mod + 55 : mod + '0');
+		n /= b;
+	}
+	return (num);
 }
 
-char			*ft_itoa_base(int value, int base)
+int                    ft_digitnum(int n, int base)
 {
-	int		i;
-	char	*nbr;
-	int		neg;
+	int        i;
 
-	i = 1;
-	neg = 0;
-	if (value < 0)
-	{
-		if (base == 10)
-			neg = 1;
-		value *= -1;
-	}
-	while (ft_pow(base, i) - 1 < value)
+	i = 0;
+	while ((n = n / base))
 		i++;
-	nbr = (char*)malloc(sizeof(nbr) * i);
-	nbr[i + neg] = '\0';
-	while (i-- > 0)
-	{
-		nbr[i + neg] = (value % base) + (value % base > 9 ? 'A' - 10 : '0');
-		value = value / base;
-	}
-	if (neg)
-		nbr[0] = '-';
-	return (nbr);
+	return (i + 1);
 }
 
 char			*reverse_array(char *s)
