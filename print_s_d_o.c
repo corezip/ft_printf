@@ -38,7 +38,7 @@ int				print_o(va_list ap, int flag)
 	n = va_arg(ap, int);
 	if (n == 0 && flag == 1)
 		return (0);
-	s = ft_itoa_base(n, 8);
+	// s = ft_itoa_base(n, 8);
 	ft_putstr(s);
 	return (ft_strlen(s));
 }
