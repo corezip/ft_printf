@@ -68,10 +68,18 @@ int			extra_con(char ***fmt, va_list ap, int flag)
 		return (print_x(ap));
 	else if (***fmt == 'X')
 		return (print_x_upper(ap));
-	else if (***fmt >= '1' || ***fmt >= '9')
-		return (space_d(&fmt, ap, flag, 0));
 	else if (***fmt == '%')
 		return (print_m());
+	else if (***fmt == 'l')
+		return (l_funtion(&fmt, ap));
+	else if (***fmt == 'h')
+		return (0);
+	else if (***fmt == 'j')
+		return (0);
+	else if (***fmt == 'z')
+		return (0);
+	else if (***fmt >= '1' || ***fmt >= '9')
+		return (space_d(&fmt, ap, flag, 0));
 	return (0);
 }
 

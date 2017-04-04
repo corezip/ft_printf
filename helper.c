@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int                    ft_digitnum(int n, int base)
+int				ft_digitnum(int n, int base)
 {
-	int        i;
+	int			i;
 
 	i = 0;
 	while ((n = n / base))
@@ -22,12 +22,12 @@ int                    ft_digitnum(int n, int base)
 	return (i + 1);
 }
 
-char    *ft_itoa_base(int n, int b)
+char			*ft_itoa_base(int n, int b)
 {
-	char    *num;
-	size_t    size;
-	int        neg;
-	int        mod;
+	char		*num;
+	size_t		size;
+	int			neg;
+	int			mod;
 
 	neg = 0;
 	size = ft_digitnum(n, b);

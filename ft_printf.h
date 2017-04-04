@@ -46,6 +46,12 @@ typedef	struct			s_u
 	long int		i;
 }						t_u;
 
+typedef	struct			s_ld
+{
+	long long		value;
+	long long		count;
+}						t_ld;
+
 typedef	struct			s_d
 {
 	int				value;
@@ -101,6 +107,7 @@ typedef	struct			s_head
 	t_u				head_u;
 	t_zero			head_zero;
 	t_pres			head_pr;
+	t_ld			head_ll;
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);
@@ -139,6 +146,9 @@ int						extra_d(int value, t_head *x, int flag, int count);
 int						s_values(char *s, t_head *x, int flag, int negative);
 int						second_option(char *s, t_head *x);
 char					*ft_itoa_base(int value, int base);
-int						ft_pow(int nb, int pow);
+int						ft_digitnum(int n, int base);
+int						l_funtion(char ****fmt, va_list ap);
+int						ll_d(long long n);
+int						ft_lputnbr(long long n);
 
 #endif

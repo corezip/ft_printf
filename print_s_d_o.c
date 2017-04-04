@@ -37,7 +37,7 @@ int				print_o(va_list ap, int flag)
 
 	n = va_arg(ap, int);
 	if (n == 0 && flag == 1)
-		return (0);
+		return (1);
 	s = ft_itoa_base(n, 8);
 	ft_putstr(s);
 	return (ft_strlen(s));
@@ -64,6 +64,11 @@ int				print_c(va_list ap)
 	c = va_arg(ap, int);
 	ft_putchar(c);
 	return (1);
+}
+
+int				ll_d(long long n)
+{
+	return (ft_lputnbr(n));
 }
 
 int				print_d(va_list ap, int flag, int space)
