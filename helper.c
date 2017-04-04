@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+int                    ft_digitnum(int n, int base)
+{
+	int        i;
+
+	i = 0;
+	while ((n = n / base))
+		i++;
+	return (i + 1);
+}
+
 char    *ft_itoa_base(int n, int b)
 {
 	char    *num;
@@ -34,16 +44,6 @@ char    *ft_itoa_base(int n, int b)
 		n /= b;
 	}
 	return (num);
-}
-
-int                    ft_digitnum(int n, int base)
-{
-	int        i;
-
-	i = 0;
-	while ((n = n / base))
-		i++;
-	return (i + 1);
 }
 
 char			*reverse_array(char *s)
