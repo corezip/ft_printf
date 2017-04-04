@@ -79,9 +79,9 @@ typedef	struct			s_o
 
 typedef	struct			s_x
 {
-	long int		decimalnumber;
-	long int		remainder;
-	long int		quotient;
+	long long		decimalnumber;
+	long long		remainder;
+	long long		quotient;
 	int				i;
 	int				count;
 	int				value;
@@ -150,5 +150,6 @@ int						ft_digitnum(int n, int base);
 int						l_funtion(char ****fmt, va_list ap);
 int						ll_d(long long n);
 int						ft_lputnbr(long long n);
+int						wide_handle(wint_t w);
 
 #endif
