@@ -25,7 +25,7 @@ int				ll_uns(unsigned long long int x, int flag, int z)
 int				l_funtion(char ****fmt, va_list ap)
 {
 	***fmt += 1;
-	if (****fmt == 'i' || ****fmt == 'd')
+	if (****fmt == 'i' || ****fmt == 'd' || ****fmt == 'u' || ****fmt == 'D')
 		return (ll_uns(va_arg(ap, unsigned long long int), 10, 0));
 	else if (****fmt == 'x')
 		return (ll_uns(va_arg(ap, unsigned long long int), 6, 0));
@@ -38,7 +38,7 @@ int				l_funtion(char ****fmt, va_list ap)
 	else if (****fmt == 'l')
 	{
 		***fmt += 1;
-		if (****fmt == 'i' || ****fmt == 'd')
+		if (****fmt == 'i' || ****fmt == 'd' || ****fmt == 'u')
 			return (ll_uns(va_arg(ap, unsigned long long int), 10, 0));
 		else if (****fmt == 'x')
 			return (ll_uns(va_arg(ap, unsigned long long int), 6, 0));
