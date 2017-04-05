@@ -73,11 +73,11 @@ int			extra_con(char ***fmt, va_list ap, int flag)
 	else if (***fmt == 'l')
 		return (l_funtion(&fmt, ap));
 	else if (***fmt == 'h')
-		return (0);
+		return (l_funtion(&fmt, ap));
 	else if (***fmt == 'j')
-		return (0);
+		return (l_funtion(&fmt, ap));
 	else if (***fmt == 'z')
-		return (0);
+		return (l_funtion(&fmt, ap));
 	else if (***fmt == 'D')
 		return (ll_d(va_arg(ap, long long)));
 	else if (***fmt >= '1' || ***fmt >= '9')
