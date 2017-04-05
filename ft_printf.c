@@ -78,6 +78,8 @@ int			extra_con(char ***fmt, va_list ap, int flag)
 		return (0);
 	else if (***fmt == 'z')
 		return (0);
+	else if (***fmt == 'D')
+		return (ll_d(va_arg(ap, long long)));
 	else if (***fmt >= '1' || ***fmt >= '9')
 		return (space_d(&fmt, ap, flag, 0));
 	return (0);

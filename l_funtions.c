@@ -24,6 +24,42 @@ int				ft_lputnbr(long long n)
 	return (n);
 }
 
+int				ft_digitnuml(unsigned long long int n, int base)
+{
+	int	i;
+
+	i = 0;
+	while ((n = n / base))
+		i++;
+	return (i + 1);
+}
+
+char			*ft_l_itoa_base(unsigned long long int value, int base)
+{
+	unsigned long long int tmp;
+	char *str;
+	size_t len;
+	char *nb;
+
+	nb = ft_strdup("0123456789ABCDEF");
+	if (value == 0 || base < 2 || base > 16)
+	{
+		ft_memdel((void **)&nb);
+		return (str = ft_strdup("0"));
+	}
+	tmp = value;
+	len = ft_digitnuml(tmp, base);
+	str = ft_strnew(len);
+	tmp = value;
+	while (tmp && len--)
+	{
+		str[len] = nb[tmp % base];
+		tmp /= base;
+	}
+	ft_memdel((void **)&nb);
+	return (str);
+}
+
 char			*wide_to_string(wint_t w)
 {
 	char *p;
@@ -52,15 +88,14 @@ char			*wide_to_string(wint_t w)
 	return (p);
 }
 
-int				wide_handle(wint_t w)
+int				print_l_c(wint_t w)
 {
 	char *s;
 
 	s = wide_to_string(w);
 	if (w == 0)
-		write(1, "0", 1);
+		return (0);
 	else
 		ft_putstr(s);
-	ft_strdel(&s);
-	return (1);
+	return (ft_strlen(s));
 }

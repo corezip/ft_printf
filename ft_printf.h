@@ -148,8 +148,10 @@ int						second_option(char *s, t_head *x);
 char					*ft_itoa_base(int value, int base);
 int						ft_digitnum(int n, int base);
 int						l_funtion(char ****fmt, va_list ap);
+int						ll_funtion(char *****fmt, va_list ap);
 int						ll_d(long long n);
 int						ft_lputnbr(long long n);
-int						wide_handle(wint_t w);
+int						print_l_c(wint_t w);
+char					*ft_l_itoa_base(unsigned long long int value, int base);
 
 #endif
