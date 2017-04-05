@@ -97,7 +97,7 @@ int			read_con(char **fmt, va_list ap, int space)
 	else if (**fmt == 'i' || **fmt == 'd')
 		return (print_d(ap, 0, space));
 	else if (**fmt == 'o' || **fmt == 'O')
-		return (print_o(ap, 0));
+		return (ll_uns(va_arg(ap, unsigned long long int), 8, 0));
 	else if (**fmt == 'c' || **fmt == 'C')
 		return (print_c(ap));
 	else if (**fmt == 'p')
