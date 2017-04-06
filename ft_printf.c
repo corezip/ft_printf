@@ -20,17 +20,17 @@ int			hash(char ***fmt, va_list ap)
 	if (***fmt == 'o' || ***fmt == 'O')
 	{
 		write(1, "0", 1);
-		return ((print_o(ap, 1)) + 1);
+		return (ll_uns(va_arg(ap, unsigned long long int), 8, 0) + 1);
 	}
 	else if (***fmt == 'x')
 	{
 		write(1, "0x", 2);
-		return ((print_x(ap)) + 2);
+		return (ll_uns(va_arg(ap, unsigned long long int), 6, 0) + 2);
 	}
 	else if (***fmt == 'X')
 	{
 		write(1, "0X", 2);
-		return ((print_x_upper(ap)) + 2);
+		return (ll_uns(va_arg(ap, unsigned long long int), 6, 1) + 2);
 	}
 	return (0);
 }
