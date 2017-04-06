@@ -66,6 +66,8 @@ LIB_OBJS = libft/ft_memset.o \
 			libft/ft_lstadd.o \
 			libft/ft_lstiter.o \
 			libft/ft_lstmap.o \
+			libft/ft_putwchar.o \
+			libft/ft_putwstr.o \
 
 RM = rm -f
 
