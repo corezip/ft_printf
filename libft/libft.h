@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <wchar.h>
 
 typedef struct		s_list
 {
@@ -89,5 +90,7 @@ void				ft_lstaddend(t_list **alst, t_list *new);
 int					ft_wordcount(char const *s, char c);
 char				*ft_nextword(const char *s, char c, size_t *ele);
 void				ft_swap(int *a, int *b);
+int					ft_putwstr(wchar_t *wcs);
+int					ft_putwchar(wchar_t wc);
 
 #endif

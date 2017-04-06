@@ -22,6 +22,14 @@ int				ll_uns(unsigned long long int x, int flag, int z)
 	return (ft_strlen(str));
 }
 
+int				print_ls(va_list ap)
+{
+	wchar_t *s;
+
+	s = va_arg(ap, wchar_t*);
+	return (ft_putwstr(s));
+}
+
 int				hh_funtion(char *****fmt, va_list ap)
 {
 	****fmt += 1;
@@ -52,7 +60,7 @@ int				l_funtion(char ****fmt, va_list ap)
 	else if (****fmt == 'c' || ****fmt == 'C')
 		return (print_l_c(va_arg(ap, wint_t)));
 	else if (****fmt == 's' || ****fmt == 'S')
-		return (print_s(va_arg(ap, char*)));
+		return (print_ls(ap));
 	else if (****fmt == 'l')
 	{
 		***fmt += 1;
