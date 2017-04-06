@@ -153,5 +153,6 @@ int						ll_d(long long n);
 int						ft_lputnbr(long long n);
 int						print_l_c(wint_t w);
 char					*ft_l_itoa_base(unsigned long long int value, int base);
+int						ll_uns(unsigned long long int x, int flag, int z);
 
 #endif
