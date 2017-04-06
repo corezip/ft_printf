@@ -1,12 +1,13 @@
 #include "ft_printf.h"
+#include <stdint.h>
 
 int			main(void)
 {
 	char s[10] = "hola pepe";
-	printf("cantidad FT: %d\n", ft_printf("FT: |%+04d\n", 42));
-	printf("cantidad OR: %d\n", printf("Or: |%+04d\n", 42));
-	// ft_printf("FT: |%p\n", "sdfgsdfgsdfgsdasdfasdfasdfasdfasdffgsdfgwesfgs");
-	// printf("OR: |%p\n", "sdfgsdfgsdfgsdasdfasdfasdfasdfasdffgsdfgwesfgs");
+	// printf("cantidad FT: %d\n", ft_printf("FT: |%+04d\n", 42));
+	// printf("cantidad OR: %d\n", printf("Or: |%+04d\n", 42));
+	// ft_printf("FT: |%#X\n", INTMAX_MIN);
+	// printf("OR: |%#X\n", INTMAX_MIN);
 	// printf("*****************\n");
 	// ft_printf("FT:lo |%lo\n", 5656498165);
 	// printf("OR:lo |%lo\n", 5656498165);

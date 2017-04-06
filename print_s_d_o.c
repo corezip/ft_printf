@@ -33,12 +33,12 @@ int				number_len(t_head *i)
 int				print_o(va_list ap, int flag)
 {
 	char		*s;
-	int			n;
+	unsigned long int			n;
 
-	n = va_arg(ap, int);
+	n = va_arg(ap, unsigned long int);
 	if (n == 0 && flag == 1)
 		return (1);
-	s = ft_itoa_base(n, 8);
+	s = ft_l_itoa_base(n, 8);
 	ft_putstr(s);
 	return (ft_strlen(s));
 }
