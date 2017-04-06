@@ -154,5 +154,7 @@ int						ft_lputnbr(long long n);
 int						print_l_c(wint_t w);
 char					*ft_l_itoa_base(unsigned long long int value, int base);
 int						ll_uns(unsigned long long int x, int flag, int z);
+int						print_s_negative(t_head *x);
+int						print_s_positive(t_head *x);
 
 #endif

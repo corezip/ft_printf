@@ -14,7 +14,8 @@
 
 static int		ft_wclen(wchar_t wc)
 {
-	int		len;
+	int			len;
+
 	len = 0;
 	if (wc <= 0xFF)
 		len = 1;
@@ -27,9 +28,10 @@ static int		ft_wclen(wchar_t wc)
 	return (len);
 }
 
-int		ft_putwstr(wchar_t *wcs)
+int				ft_putwstr(wchar_t *wcs)
 {
-	int		len;
+	int			len;
+
 	len = 0;
 	while (*wcs)
 	{

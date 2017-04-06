@@ -1,46 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   space.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsolis <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/10 14:37:31 by gsolis            #+#    #+#             */
+/*   Updated: 2017/03/10 14:37:33 by gsolis           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-
-int				print_s_negative(t_head *x)
-{
-	if (x->head_s.len > x->head_pr.space)
-	{
-		ft_putstr(x->head_s.value);
-		return (x->head_s.len);
-	}
-	else
-	{
-		x->head_s.count = 0;
-		x->head_s.len = x->head_pr.space - x->head_s.len;
-		ft_putstr(x->head_s.value);
-		while (x->head_s.len != x->head_s.count)
-		{
-			write(1, " ", 1);
-			x->head_s.count += 1;
-		}
-		return (x->head_pr.space);
-	}
-}
-
-int				print_s_positive(t_head *x)
-{
-	if (x->head_s.len > x->head_pr.space)
-	{
-		ft_putstr(x->head_s.value);
-		return (x->head_s.len);
-	}
-	else
-	{
-		x->head_s.count = 0;
-		x->head_s.len = x->head_pr.space - x->head_s.len;
-		while (x->head_s.len != x->head_s.count)
-		{
-			write(1, " ", 1);
-			x->head_s.count += 1;
-		}
-		ft_putstr(x->head_s.value);
-		return (x->head_pr.space);
-	}
-}
 
 int				pre_s(t_head *x, va_list ap, int flag)
 {

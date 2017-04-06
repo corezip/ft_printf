@@ -47,7 +47,7 @@ int				p_solver(long i)
 	else
 	{
 		x->head_x.decimalnumber = x->head_x.decimalnumber + 4294967296;
-		resul_hex(x);
+		resul_p(x);
 	}
 	reverse_array(x->head_x.hexadecimalnumber);
 	ft_strlowcase(x->head_x.hexadecimalnumber);
@@ -60,7 +60,7 @@ int				print_p(va_list ap)
 	long			i;
 
 	write(1, "0x", 2);
-	i = (long) va_arg(ap, void*);
+	i = (long)va_arg(ap, void*);
 	i = p_solver(i);
 	return (i);
 }

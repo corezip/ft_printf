@@ -12,28 +12,10 @@
 
 #include "ft_printf.h"
 
-int				number_len(t_head *i)
+int						print_o(va_list ap, int flag)
 {
-	i->head_d.count = 1;
-	i->head_d.flag = 0;
-	if (i->head_d.value < 0)
-	{
-		i->head_d.flag = 1;
-		i->head_d.count++;
-	}
-	while ((i->head_d.value / 10 < 0 && (i->head_d.flag == 1)) ||
-	(i->head_d.value / 10 > 0 && i->head_d.flag == 0))
-	{
-		i->head_d.value = i->head_d.value / 10;
-		i->head_d.count++;
-	}
-	return (i->head_d.count);
-}
-
-int				print_o(va_list ap, int flag)
-{
-	char		*s;
-	unsigned long int			n;
+	char				*s;
+	unsigned long int	n;
 
 	n = va_arg(ap, unsigned long int);
 	if (n == 0 && flag == 1)
@@ -43,9 +25,9 @@ int				print_o(va_list ap, int flag)
 	return (ft_strlen(s));
 }
 
-int				print_s(char *s)
+int						print_s(char *s)
 {
-	int			i;
+	int					i;
 
 	if (s == NULL)
 	{
@@ -57,23 +39,23 @@ int				print_s(char *s)
 	return (i);
 }
 
-int				print_c(va_list ap)
+int						print_c(va_list ap)
 {
-	char		c;
+	char				c;
 
 	c = va_arg(ap, int);
 	ft_putchar(c);
 	return (1);
 }
 
-int				ll_d(long long n)
+int						ll_d(long long n)
 {
 	return (ft_lputnbr(n));
 }
 
-int				print_d(va_list ap, int flag, int space)
+int						print_d(va_list ap, int flag, int space)
 {
-	t_head		*i;
+	t_head				*i;
 
 	i = (t_head*)malloc(sizeof(t_head));
 	i->head_d.value = va_arg(ap, int);

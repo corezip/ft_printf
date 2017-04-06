@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   l_funtions.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsolis <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/10 21:37:43 by gsolis            #+#    #+#             */
+/*   Updated: 2017/03/10 21:37:44 by gsolis           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int				ft_lputnbr(long long n)
+int							ft_lputnbr(long long n)
 {
-	int x;
+	int						x;
 
 	x = 0;
 	if (n == -9223372036854775807)
@@ -24,9 +36,9 @@ int				ft_lputnbr(long long n)
 	return (n);
 }
 
-int				ft_digitnuml(unsigned long long int n, int base)
+int							ft_digitnuml(unsigned long long int n, int base)
 {
-	int	i;
+	int						i;
 
 	i = 0;
 	while ((n = n / base))
@@ -34,12 +46,13 @@ int				ft_digitnuml(unsigned long long int n, int base)
 	return (i + 1);
 }
 
-char			*ft_l_itoa_base(unsigned long long int value, int base)
+char						*ft_l_itoa_base(unsigned long long int value,
+	int base)
 {
-	unsigned long long int tmp;
-	char *str;
-	size_t len;
-	char *nb;
+	unsigned long long int	tmp;
+	char					*str;
+	size_t					len;
+	char					*nb;
 
 	nb = ft_strdup("0123456789ABCDEF");
 	if (value == 0 || base < 2 || base > 16)
@@ -60,9 +73,9 @@ char			*ft_l_itoa_base(unsigned long long int value, int base)
 	return (str);
 }
 
-char			*wide_to_string(wint_t w)
+char						*wide_to_string(wint_t w)
 {
-	char *p;
+	char					*p;
 
 	p = ft_strnew(4);
 	if (w <= 0x0ff)
@@ -88,9 +101,9 @@ char			*wide_to_string(wint_t w)
 	return (p);
 }
 
-int				print_l_c(wint_t w)
+int							print_l_c(wint_t w)
 {
-	char *s;
+	char					*s;
 
 	s = wide_to_string(w);
 	if (w == 0)
