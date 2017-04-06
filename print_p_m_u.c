@@ -60,7 +60,7 @@ int				print_p(va_list ap)
 	long			i;
 
 	write(1, "0x", 2);
-	i = (long)va_arg(ap, void*);
+	i = (long) va_arg(ap, void*);
 	i = p_solver(i);
 	return (i);
 }
