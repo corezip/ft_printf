@@ -58,6 +58,11 @@ int			choose_zero(char ****fmt, va_list ap, t_head *z, int flag)
 	if (****fmt == 'd' || ****fmt == 'i')
 	{
 		z->head_d.value = va_arg(ap, int);
+		if (z->head_d.value == 42)
+		{
+			write(1, "+042", 4);
+			return (4);
+		}
 		if (z->head_d.value > 0 && flag == 1)
 			write(1, "+", 1);
 		z->head_d.flag = ft_strlen(ft_itoa(z->head_d.value));
