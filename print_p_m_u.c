@@ -58,11 +58,13 @@ int				p_solver(long i)
 int				print_p(va_list ap)
 {
 	long			i;
+	char			*s;
 
 	write(1, "0x", 2);
-	i = (long)va_arg(ap, void*);
-	i = p_solver(i);
-	return (i);
+	i = (unsigned long int)va_arg(ap, void*);
+	s = ft_l_itoa_base(i, 6);
+	ft_putstr(s);
+	return (ft_strlen(s));
 }
 
 int				print_m(void)
