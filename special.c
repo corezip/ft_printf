@@ -52,7 +52,7 @@ int				l_funtion(char ****fmt, va_list ap)
 	else if (****fmt == 'c' || ****fmt == 'C')
 		return (print_l_c(va_arg(ap, wint_t)));
 	else if (****fmt == 's' || ****fmt == 'S')
-		return (print_s(va_arg(ap, char*)))
+		return (print_s(va_arg(ap, char*)));
 	else if (****fmt == 'l')
 	{
 		***fmt += 1;
