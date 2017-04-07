@@ -43,11 +43,11 @@ int				p_solver(long i)
 	x = (t_head*)malloc(sizeof(t_head));
 	x->head_x.decimalnumber = i;
 	if (x->head_x.decimalnumber >= 0)
-		resul_p(x);
+		resul_hex(x);
 	else
 	{
 		x->head_x.decimalnumber = x->head_x.decimalnumber + 4294967296;
-		resul_p(x);
+		resul_hex(x);
 	}
 	reverse_array(x->head_x.hexadecimalnumber);
 	ft_strlowcase(x->head_x.hexadecimalnumber);
@@ -58,14 +58,10 @@ int				p_solver(long i)
 int				print_p(va_list ap)
 {
 	long			i;
-	// char			*s;
 
 	write(1, "0x", 2);
-	i = (long)va_arg(ap, void*);
+	i = (long) va_arg(ap, void*);
 	i = p_solver(i);
-	// s = ft_l_itoa_base(i, 6);
-	// s[0] = 'M';
-	// ft_putstr(s);
 	return (i);
 }
 

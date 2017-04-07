@@ -1,17 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   presition.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gsolis <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/10 14:37:31 by gsolis            #+#    #+#             */
-/*   Updated: 2017/03/10 14:37:33 by gsolis           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "ft_printf.h"
-
 int				extra_d(int value, t_head *x, int flag, int count)
 {
 	flag = 1;
@@ -50,7 +38,7 @@ int				plus_d(int value, t_head *x, int flag, int count)
 		x->head_pr.calc = x->head_pr.space - x->head_pr.calc;
 		if (x->head_pr.calc < 0)
 			x->head_pr.calc = (x->head_pr.calc * -1) - 1;
-		while (count != x->head_pr.calc)
+		while(count != x->head_pr.calc)
 		{
 			write(1, " ", 1);
 			count += 1;
@@ -76,7 +64,7 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 		x->head_pr.calc = x->head_pr.presition - x->head_pr.calc;
 		if (x->head_pr.calc < 0)
 			x->head_pr.calc = (x->head_pr.calc * -1) - 1;
-		while (count != x->head_pr.calc)
+		while(count != x->head_pr.calc)
 		{
 			write(1, "0", 1);
 			count += 1;
@@ -89,21 +77,11 @@ int				equal_less_d(int value, t_head *x, int flag, int count)
 	return (0);
 }
 
-int				helper_s(va_list ap, t_head *x, int flag, int negative)
-{
-	char *s;
-
-	s = va_arg(ap, char*);
-	x->head_s.len = ft_strlen(s);
-	return (s_values(s, x, flag, negative));
-}
-
 /*
 **        x->head_pr.space tiene el valor del primer entero detras del punto.
 **        X = x->head_pr.space
 **        Y = x->head_pr.presition
 */
-
 int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 {
 	****fmt += 1;
@@ -122,7 +100,5 @@ int				values_presition(char *****fmt, va_list ap, t_head *x, int flag)
 		else if (x->head_pr.space > x->head_pr.presition)
 			return (plus_d(va_arg(ap, int), x, flag, 0));
 	}
-	else if (*****fmt == 's' || *****fmt == 'i')
-		return (helper_s(ap, x, flag, x->head_pr.negative));
 	return (0);
 }

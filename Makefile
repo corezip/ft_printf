@@ -3,7 +3,7 @@ NAME = libftprintf.a
 CFLAG = -c -Wall -Werror -Wextra
 
 SRCS = ft_printf.c print_s_d_o.c print_p_m_u.c helper.c xnumber.c zero.c \
-space.c presition.c s_presition.c l_funtions.c special.c space_2.c
+space.c presition.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -66,8 +66,6 @@ LIB_OBJS = libft/ft_memset.o \
 			libft/ft_lstadd.o \
 			libft/ft_lstiter.o \
 			libft/ft_lstmap.o \
-			libft/ft_putwchar.o \
-			libft/ft_putwstr.o \
 
 RM = rm -f
 
