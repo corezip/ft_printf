@@ -41,7 +41,7 @@ int				print_x_upper(va_list ap)
 	t_head		*x;
 
 	x = (t_head*)malloc(sizeof(t_head));
-	x->head_x.decimalnumber = va_arg(ap, long int);
+	x->head_x.decimalnumber = va_arg(ap, int);
 	if (x->head_x.decimalnumber >= 0)
 		resul_hex(x);
 	else
