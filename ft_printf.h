@@ -79,7 +79,7 @@ typedef	struct			s_o
 
 typedef	struct			s_x
 {
-	long int		decimalnumber;
+	int		decimalnumber;
 	long int		remainder;
 	long int		quotient;
 	int				i;
