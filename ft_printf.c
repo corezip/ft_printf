@@ -92,8 +92,6 @@ int			read_con(char **fmt, va_list ap, int space)
 		*fmt += 1;
 		space = 1;
 	}
-	
-			write(1, "1", 1);
 	if (**fmt == 's' || **fmt == 'S')
 		return (print_s(va_arg(ap, char*)));
 	else if (**fmt == 'i' || **fmt == 'd')
@@ -112,6 +110,7 @@ int			read_con(char **fmt, va_list ap, int space)
 		return (mult_options(&fmt, ap));
 	else
 		return (extra_con(&fmt, ap, space));
+	write(1, &fmt, 1);
 	return (0);
 }
 
