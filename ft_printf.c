@@ -47,7 +47,7 @@ int			mult_options(char ***fmt, va_list ap)
 		else if (***fmt >= '1' || ***fmt >= '9')
 			return (space_d(&fmt, ap, 0, 1));
 	}
-	else if (***fmt == '+')
+	if (***fmt == '+')
 	{
 		write(1, "1", 1);
 		**fmt += 1;
