@@ -85,6 +85,7 @@ int			zero_w(char ****fmt, va_list ap, int flag)
 	t_head	*z;
 
 	***fmt += 1;
+	write(1, "1", 1);
 	z = (t_head*)malloc(sizeof(t_head));
 	z->head_zero.ilen = 0;
 	while (****fmt >= '0' && ****fmt <= '9')
