@@ -113,13 +113,13 @@ int		main(void)
 	/* --------Unsigned Numbers ------------------ */
 		// U flag
 	
-	unsigned char uc = 'A';
-	unsigned short int usi = 65000;
-	unsigned int usint = 4294967295;
-	unsigned long int uli = 4294967295;
-	unsigned long long ulli = 18446744073709551614U;
-	uintmax_t uit1 = 4294967295;
-	size_t  st2 = 4294967295;
+	// unsigned char uc = 'A';
+	// unsigned short int usi = 65000;
+	// unsigned int usint = 4294967295;
+	// unsigned long int uli = 4294967295;
+	// unsigned long long ulli = 18446744073709551614U;
+	// uintmax_t uit1 = 4294967295;
+	// size_t  st2 = 4294967295;
 	// ft_printf("MINE_: Number[107] = [%hhu]\n", uc);
 	// printf("STD_C: Number[107] = [%hhu]\n", uc);
 	// ft_printf("MINE_: Number[107] = [%hu]\n", usi);
@@ -133,8 +133,8 @@ int		main(void)
 	// ft_printf("MINE_: Number[107] = [%llu]\n", ulli);
 	// printf("STD_C: Number[107] = [%llu]\n", ulli);
 
-	ft_printf("MINE_: Number[107] = [%#llx]\n", ulli);
-	printf("STD_C: Number[1078] = [%#llx]\n", ulli);
+	// ft_printf("MINE_: Number[107] = [%#llx]\n", ulli);
+	// printf("STD_C: Number[1078] = [%#llx]\n", ulli);
 	
 	// ft_printf("MINE_: Number[107] = [%#x]\n", 42);
 	// printf("STD_C: Number[107] = [%#x]\n", 42);	
@@ -230,6 +230,11 @@ int		main(void)
 	//ft_printf("MINE_: Number[107] = [%-20li]\n", 10079999999);
 	printf("STD_C: Number[107] = [%-20li]\n", 10079999999);
 	*/
+
+	//char s[] = "hola bebe";
+	char *s = ft_strdup("hola bebe");
+	printf("%p or\n", &s);
+	ft_printf("%p ft\n", &s);
 	return (0);
 }
 

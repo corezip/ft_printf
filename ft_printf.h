@@ -82,11 +82,11 @@ typedef	struct			s_x
 	long int		decimalnumber;
 	long int		remainder;
 	long int		quotient;
-	int				i;
+	long int		i;
 	int				count;
 	int				value;
 	int				temp;
-	char			hexadecimalnumber[100];
+	char			*hexadecimalnumber;
 	char			*hexa;
 }						t_x;
 
@@ -108,6 +108,7 @@ typedef	struct			s_head
 	t_zero			head_zero;
 	t_pres			head_pr;
 	t_ld			head_ll;
+	t_deb			head_t;
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);

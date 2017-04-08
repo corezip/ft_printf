@@ -54,7 +54,7 @@ char			*reverse_array(char *s)
 
 	j = 0;
 	i = ft_strlen(s);
-	x = (char*)malloc(i);
+	x = (char*)malloc(i + 1);
 	i -= 1;
 	while (i != -1)
 	{
@@ -62,7 +62,9 @@ char			*reverse_array(char *s)
 		i--;
 		j++;
 	}
+	x[j] = '\0';
 	ft_strcpy(s, x);
+	free(x);
 	return (s);
 }
 
