@@ -62,6 +62,8 @@ int			mult_options(char ***fmt, va_list ap)
 
 int			extra_con(char ***fmt, va_list ap, int flag)
 {
+	
+			write(1, "1", 1);
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
 	else if (***fmt == 'x')
@@ -125,7 +127,6 @@ int			ft_printf(const char *fmt, ...)
 	{
 		if (*x.format == '%')
 		{
-			write(1, "1", 1);
 			x.format += 1;
 			if ((x.len = read_con(&x.format, ap, 0)) == 0)
 				break ;
