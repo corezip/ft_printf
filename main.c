@@ -235,9 +235,9 @@ int		main(void)
 	// char *s = ft_strdup("hola bebe");
 	// printf("%d %C %s %d %u %X %c \n", &s);
 	// ft_printf("%d %C %s %d %u %X %c\n", 42, '2', "hola", 41, 42, 43 ,'j');
-	ft_printf("%+04d\n", 42);
-	// printf("%+04d\n", 42);
-	// printf("ft: %d - or: %d\n",x, y );
+	int x = ft_printf("%0+04d\n", 42);
+	int y = printf("%+04d\n", 42);
+	printf("ft: %d - or: %d\n",x, y );
 	return (0);
 }
 
