@@ -62,8 +62,6 @@ int			mult_options(char ***fmt, va_list ap)
 
 int			extra_con(char ***fmt, va_list ap, int flag)
 {
-	
-			write(1, "1", 1);
 	if (***fmt == '0')
 		return (zero_w(&fmt, ap, 0));
 	else if (***fmt == 'x')
@@ -109,7 +107,10 @@ int			read_con(char **fmt, va_list ap, int space)
 	else if (**fmt == '#')
 		return (hash(&fmt, ap));
 	else if (**fmt == '-' || **fmt == '+')
+	{
+		write(1, "1", 1);
 		return (mult_options(&fmt, ap));
+	}
 	else
 		return (extra_con(&fmt, ap, space));
 	return (0);
