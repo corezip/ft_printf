@@ -53,12 +53,12 @@ int			mult_options(char ***fmt, va_list ap)
 		while (***fmt == '+' || ***fmt == ' ')
 			**fmt += 1;
 		if (***fmt == 'd' || ***fmt == 'i')
+			return (print_d(ap, 1, 0));
+		if (***fmt == '0')
 		{
 			write(1, "1", 1);
-			return (print_d(ap, 1, 0));
-		}
-		if (***fmt == '0')
 			return (zero_w(&fmt, ap, 1));
+		}
 	}
 	return (0);
 }
