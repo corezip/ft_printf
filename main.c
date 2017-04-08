@@ -17,7 +17,7 @@
 
 int		main(void)
 {
-	char *p = "Hello";
+	// char *p = "Hello";
 
 	//ft_printf("{%05s}\n", "abc");
 	// ft_printf("{% C}\n", 0);
@@ -232,9 +232,9 @@ int		main(void)
 	*/
 
 	//char s[] = "hola bebe";
-	char *s = ft_strdup("hola bebe");
-	printf("%p or\n", &s);
-	ft_printf("%p ft\n", &s);
+	// char *s = ft_strdup("hola bebe");
+	// printf("%d %C %s %d %u %X %c \n", &s);
+	ft_printf("%d %C %s %d %u %X %c\n", 42, '2', "hola", 41, 42, 43 ,'j');
 	return (0);
 }
 
