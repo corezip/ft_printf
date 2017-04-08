@@ -88,10 +88,10 @@ int			zero_w(char ****fmt, va_list ap, int flag)
 	z = (t_head*)malloc(sizeof(t_head));
 	z->head_zero.ilen = 0;
 	if (****fmt == '+')
-		{
-			flag = 1;
-			***fmt += 1;
-		}
+	{
+		flag = 1;
+		***fmt += 1;
+	}
 	while (****fmt >= '0' && ****fmt <= '9')
 	{
 		z->head_zero.convert[z->head_zero.ilen] = ****fmt + 0;

@@ -92,7 +92,6 @@ int			read_con(char **fmt, va_list ap, int space)
 		*fmt += 1;
 		space = 1;
 	}
-	// printf("%s\n", *fmt);
 	if (**fmt == 's' || **fmt == 'S')
 		return (print_s(va_arg(ap, char*)));
 	else if (**fmt == 'i' || **fmt == 'd')
