@@ -69,7 +69,7 @@ int			choose_zero(char ****fmt, va_list ap, t_head *z, int flag)
 		}
 		if (value_space(z, flag) > 0)
 		{
-			ft_putnbr(z->head_d.value);
+			ft_printf("%d", z->head_d.value);
 			return ((z->head_zero.ilen + z->head_d.flag) + flag);
 		}
 		ft_putnbr(z->head_d.value);
