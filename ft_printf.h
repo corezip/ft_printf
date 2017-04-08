@@ -108,7 +108,6 @@ typedef	struct			s_head
 	t_zero			head_zero;
 	t_pres			head_pr;
 	t_ld			head_ll;
-	t_deb			head_t;
 }						t_head;
 
 int						ft_printf(const char *fmt, ...);
