@@ -47,9 +47,8 @@ int			mult_options(char ***fmt, va_list ap)
 		else if (***fmt >= '1' || ***fmt >= '9')
 			return (space_d(&fmt, ap, 0, 1));
 	}
-	if (***fmt == '+')
+	else if (***fmt == '+')
 	{
-		write(1, "1", 1);
 		**fmt += 1;
 		while (***fmt == '+' || ***fmt == ' ')
 			**fmt += 1;
@@ -126,6 +125,7 @@ int			ft_printf(const char *fmt, ...)
 	{
 		if (*x.format == '%')
 		{
+			write(1, "1", 1);
 			x.format += 1;
 			if ((x.len = read_con(&x.format, ap, 0)) == 0)
 				break ;
