@@ -92,6 +92,7 @@ int			zero_w(char ****fmt, va_list ap, int flag)
 		z->head_zero.convert[z->head_zero.ilen] = ****fmt + 0;
 		***fmt += 1;
 		z->head_zero.ilen++;
+		write(1, "1", 1);
 	}
 	z->head_zero.num = ft_atoi(z->head_zero.convert);
 	return (choose_zero(fmt, ap, z, flag));
