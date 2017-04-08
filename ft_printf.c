@@ -49,16 +49,14 @@ int			mult_options(char ***fmt, va_list ap)
 	}
 	else if (***fmt == '+')
 	{
+		write(1, "1", 1);
 		**fmt += 1;
 		while (***fmt == '+' || ***fmt == ' ')
 			**fmt += 1;
 		if (***fmt == 'd' || ***fmt == 'i')
 			return (print_d(ap, 1, 0));
 		if (***fmt == '0')
-		{
-			write(1, "1", 1);
 			return (zero_w(&fmt, ap, 1));
-		}
 	}
 	return (0);
 }
